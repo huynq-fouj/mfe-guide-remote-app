@@ -19,8 +19,10 @@
     "@angular/platform-browser": "^18.0.0",
     "@angular/platform-browser-dynamic": "^18.0.0",
     "@angular/router": "^18.0.0",
+    "@primeuix/themes": "^2.0.2",
     "@softarc/native-federation-node": "^3.3.4",
     "es-module-shims": "^1.5.12",
+    "primeng": "^18.0.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
