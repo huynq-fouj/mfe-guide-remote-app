@@ -13,7 +13,7 @@
     <table class="custom-table">
       <thead>
         <tr>
-          <th style="width: 50px;">ID</th>
+          <th style="width: 50px;">STT</th>
           <th>Mã KH</th>
           <th>Tên khách hàng</th>
           <th>Mã số thuế</th>
@@ -23,25 +23,27 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let cus of customers">
-          <td>{{ cus.id }}</td>
-          <td><span class="code-highlight">{{ cus.code }}</span></td>
-          <td>
-            <div class="user-info">
-              <span>{{ cus.name || cus.buyerName || '---' }}</span>
-              <span *ngIf="cus.gender === 1" class="badge badge-male">Nam</span>
-              <span *ngIf="cus.gender === 2" class="badge badge-female">Nữ</span>
-            </div>
-          </td>
-          <td>{{ cus.taxCode || '---' }}</td>
-          <td>{{ cus.createTime | date:'dd/MM/yyyy' }}</td>
-          <td class="text-right money-receive">
-            {{ cus.debtReceivable | currency:'VND':'symbol':'1.0-0' }}
-          </td>
-          <td class="text-right money-pay">
-            {{ cus.debtPayable | currency:'VND':'symbol':'1.0-0' }}
-          </td>
-        </tr>
+        @for (cus of customers; let i = $index; track cus.id;) {
+          <tr (click)="viewDetail(cus)">
+            <td>{{ i + 1 + params.page * params.size }}</td>
+            <td><span class="code-highlight">{{ cus.code }}</span></td>
+            <td>
+              <div class="user-info">
+                <span>{{ cus.name || cus.buyerName || '---' }}</span>
+                <span *ngIf="cus.gender === 1" class="badge badge-male">Nam</span>
+                <span *ngIf="cus.gender === 2" class="badge badge-female">Nữ</span>
+              </div>
+            </td>
+            <td>{{ cus.taxCode || '---' }}</td>
+            <td>{{ cus.createTime | date:'dd/MM/yyyy' }}</td>
+            <td class="text-right money-receive">
+              {{ cus.debtReceivable | currency:'VND':'symbol':'1.0-0' }}
+            </td>
+            <td class="text-right money-pay">
+              {{ cus.debtPayable | currency:'VND':'symbol':'1.0-0' }}
+            </td>
+          </tr>
+        }
         
         <tr *ngIf="!loading && customers.length === 0">
           <td colspan="7" class="text-center">Không có dữ liệu hiển thị</td>

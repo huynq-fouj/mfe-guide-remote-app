@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CustomerRequestParams, CustomersResponse } from '../types';
+import { Customer, CustomerRequestParams, CustomersResponse } from '../types';
 import { CustomerService } from '../services/customer.service';
 import { finalize } from 'rxjs';
 import { CommonModule } from '@angular/common';
@@ -67,5 +67,9 @@ export class CustomersComponent implements OnInit {
     this.params.size = +event.target.value;
     this.params.page = 0;
     this.getCustomers();
+  }
+
+  viewDetail(customer: Customer) {
+    console.log(customer)
   }
 }
