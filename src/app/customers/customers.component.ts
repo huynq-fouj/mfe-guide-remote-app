@@ -70,6 +70,10 @@ export class CustomersComponent implements OnInit {
   }
 
   viewDetail(customer: Customer) {
-    console.log(customer)
+    window.dispatchEvent(
+      new CustomEvent('easypos:view-detail-customer', {
+        detail: customer
+      })
+    );
   }
 }
